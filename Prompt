@@ -1,0 +1,45 @@
+Tomorrow I have a talent quest stage 3 exam and it's information are provided in the image.
+
+And some more information are -
+1.They will provide unique use case and we should use python to build it
+2. Points they said me to remember is - be aware of what u are building and designing
+3.along with use case I think they will provide feed data I think
+4.build application or something and setup that solves the problem
+5.along with code files we need to create a uploadable manifest (markdown) file - like it should have details or listing of script files and then it should have rationale of what I have done and if I had time more than 24 hr what is the additional thing I would do.
+
+They have provided a sample manifest.md file it is -Sample MANIFEST.md
+
+(fictional example-a "Meeting Room Booking Assistant," not a real assessment instance)
+
+You upload your code files as flat attachments - there are no folders once they're uploaded. So: give each file a name that shows where it used to live, using _ in place of /. For example, a file that was at app/agent/workflow.py gets uploaded as app_agent_workflow.py. This keeps file names unique and lets a reviewer picture your project's structure even without real folders.
+
+You also don't need a separate manifest and rationale document - one file covering both, like this one, is enough.
+
+Where things are
+
+Agentic loop/orchestration: app_agent_workflow.py
+
+Tool definitions: app_agent_tools.py check_room_availability(), lookup_room_catalog(), confirm_booking()
+
+-text room matching: app_agent_parser.py match_room_name(), turns a phrase like "the small room on 3" into a catalog room ID
+
+Free
+
+Persistence/database code: app_models_database.py (connection + queries), schema in app_models_models.py
+
+Rationale
+
+I built room-lookup and availability-checking as two separate tools instead of one. A requester's room name (like "the small room on 3") often doesn't match the catalog's room ID directly, and that step can fail on its own - separate from whether the room is actually free. Keeping them apart made it easier to tell "couldn't find the room" apart from "found it, but it's busy."
+
+The brief didn't say what to do if a requester books a slot that's already tentatively (not yet confirmed) held by someone else. I decided a tentative hold shouldn't block a new request outright, but the new request should need manual confirmation instead of auto-approving. Someone could reasonably argue a tentative hold should block the slot completely - I picked the softer option because nothing in the brief said holds were final.
+
+Before saving a room that the Al picked from a free-text request, I check that the room ID it returned actually exists in the catalog. If it doesn't, I don't save it - I send it for manual review instead of guessing.
+
+One thing I left out: there's no way to cancel or edit a booking once it's made only new bookings are handled. With more time, that's what I'd add next.
+
+6.If we include LLM in the solution (then they I mean the umpirest Or reviewer will look at token consumption from solution perspective)
+7.along with files, we shouldn't share the env file
+8.note - if the business use case needs a human intervention or action if it's only neede according to business use case then we can create UI using streamlit (create ui only if it's necessary)
+
+And 9.manadatory quessionaire - mcq plus descriptive questions type and
+Mention few points about the answer for descriptive type questions
