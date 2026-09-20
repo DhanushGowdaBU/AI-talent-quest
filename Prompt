@@ -135,3 +135,12 @@ File/path
 1. ...
 2. ...
 
+
+The evaluator should be able to scan the document quickly and understand:
+What you built
+Why you built it this way
+What assumptions you made
+What safeguards you implemented
+What you would improve
+
+
