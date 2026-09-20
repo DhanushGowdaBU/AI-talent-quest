@@ -47,3 +47,52 @@ Mention few points about the answer for descriptive type questions
 
 
 And also the solution and approach we use to solve the problem should we very unique and should be like a human has thought and solved that problem and it should bes best approach, because if everyone are participating and give the same idea then it will be samea so my idea needs to be very unique and human thought solved type
+
+
+
+
+
+
+
+
+manifest currently says:
+Auto-resolve means both conditions hold: the client's stated reason is supported by the booking record ... and the amount is below the $1,000 threshold.
+I would make the decision matrix more explicit.
+For refund, something like:
+REFUND AUTO-RESOLVE only if:
+
+1. Intent = REFUND
+2. Booking identity is unambiguous
+3. Booking exists
+4. Request reason is supported by booking evidence
+5. No fraud/dispute hold
+6. Refund value is valid and non-negative
+7. Refund value < configured threshold
+8. No previous refund action exists
+9. LLM and deterministic interpreter agree
+Then:
+Otherwise → HUMAN
+For reschedule:
+RESCHEDULE AUTO-RESOLVE only if:
+
+1. Intent = RESCHEDULE
+2. Booking identity is unambiguous
+3. Booking exists
+4. Booking permits rescheduling
+5. Requested date is concrete OR explicitly enters pending state
+6. Reschedule history doesn't violate policy
+7. No fraud/dispute hold
+8. No previous conflicting reschedule action
+
+
+
+
+Your fuzzy matching needs careful justification
+You wrote:
+"Fenela vs Fenella ... match at 20.92 similarity"
+This is potentially risky.
+If 20.92 is a similarity score, it sounds suspiciously low unless the library's scale has a special meaning.
+More importantly, don't rely on customer-name fuzzy matching if a reliable booking/customer identifier exists.
+
+
+
