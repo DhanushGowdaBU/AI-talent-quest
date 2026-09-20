@@ -96,3 +96,42 @@ More importantly, don't rely on customer-name fuzzy matching if a reliable booki
 
 
 
+# Title
+
+## Where things are
+File → Role
+
+## Rationale
+Design decision → Why → Alternative/trade-off → Result
+
+## Verified behavior
+(optional but useful)
+
+## Token consumption
+(optional but useful)
+
+## What I'd add with more time
+
+
+
+
+# Project name
+
+## Where things are
+
+File/path
+- What it does
+
+File/path
+- What it does
+
+## Rationale
+
+1. Important design decision...
+2. Important design decision...
+
+## What I'd add with more time
+
+1. ...
+2. ...
+
